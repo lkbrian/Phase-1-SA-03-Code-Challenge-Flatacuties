@@ -13,7 +13,9 @@ body {
 }
 #animals-Section {
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 30px;  
+  text-align: center;
+  width: 100%;
 }
 #animals-Section h1 {
   text-align: center;
@@ -23,15 +25,21 @@ ul {
   display: flex;
   align-items: center;
   flex-direction: column;
+
 }
 ul li {
   list-style: none;
   font-size: 1.6rem;
+  width: 50%;
+  padding: 12px;
+
 }
 .animal-Card {
-  height: 30vh;
-  width: 400px;
-  border: 2px solid black;
+  height: auto;
+  width: 100%;
+  display: none;
+  padding: 12px;
+
 }
 .buttons {
   display: flex;
