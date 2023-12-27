@@ -30,14 +30,15 @@ ul {
 ul li {
   list-style: none;
   font-size: 1.6rem;
-  width: 50%;
-  padding: 12px;
+  width: auto;
+  margin: 12px;
+  cursor: pointer;
 
 }
 .animal-Card {
   height: auto;
-  width: 100%;
-  display: none;
+  width: 50%;
+  display: noe;
   padding: 12px;
 
 }
@@ -47,6 +48,12 @@ ul li {
   padding: 10px;
   align-items: flex-end;
 
+}
+.animal-Card img{
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-position: center;
+  object-fit: cover;
 }
 .buttons p{
     font-size: 1.4rem;
