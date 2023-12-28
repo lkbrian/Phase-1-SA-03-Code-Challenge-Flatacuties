@@ -37,8 +37,6 @@ ul li {
 }
 .animal-Card {
   height: auto;
-  width: 50%;
-  display: noe;
   padding: 12px;
 
 }
@@ -50,10 +48,7 @@ ul li {
 
 }
 .animal-Card img{
-  width: 100%;
-  aspect-ratio: 3/2;
-  object-position: center;
-  object-fit: cover;
+height: 250px;
 }
 .buttons p{
     font-size: 1.4rem;
@@ -66,6 +61,7 @@ ul li {
   border: none;
   border-radius: .5rem;
   color: #fff;
+  cursor: pointer;
 }
 .buttons #vote{
     background: #055c04;
