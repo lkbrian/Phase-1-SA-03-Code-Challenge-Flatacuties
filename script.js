@@ -13,7 +13,9 @@ function buildCharacter(characters) {
   characters.forEach((element) => {
     const li = document.createElement("li");
     li.innerHTML = element.name;
-    li.addEventListener('click', () => fetchAnimal(element.id)); 
+    li.addEventListener('click', (event) => {
+      event.preventDefault()
+      fetchAnimal(element.id)}); 
     ul.appendChild(li);
   });
 }
@@ -40,27 +42,47 @@ function buildAnimal(animal) {
     <p>Name: ${animal.name}</p>
     <p id="votes">Votes: ${animal.votes}</p>
     <div class="buttons">
-      <button id="vote" >Vote</button> 
-      <button id="clear">Clear</button>
+      <button id="vote" type="button">Vote</button> 
+      <button id="clear" type="button">Clear</button>
     </div>`;
 
-    let voteCount = animal.votes; 
-
-    animalcard.querySelector('#vote').addEventListener('click', function () {
-
-      voteCount++;
-      animalcard.querySelector('#votes').innerText = `Votes: ${voteCount}`;
+    animalcard.querySelector('#vote').addEventListener('click',(event)=>{
+    event.preventDefault()
+      animal.votes += 1
+      animalcard.querySelector('#votes').innerHTML = `Votes: ${animal.votes}`
+      updateVotes(animal)
+    });
+    animalcard.querySelector('#clear').addEventListener('click',(event)=>{
+    event.preventDefault()
+      animal.votes =0
+      animalcard.querySelector('#votes').innerHTML = `Votes: ${animal.votes}`
+      clearVotes(animal)
     });
 
-    let clear = animal.votes; 
-
-    animalcard.querySelector('#clear').addEventListener('click', function () {
-     voteCount = 0;
-    animalcard.querySelector('#votes').innerText = `Votes: ${clear}`;
-    });
   let showAnimal=document.querySelector('ul')
   showAnimal.appendChild(animalcard)
 }
-
-
-
+//adding votes 
+function updateVotes(item) {
+  fetch(`http://localhost:3000/characters/${item.id}`,{
+    method: 'PATCH',
+    headers:{
+      "Content-type":"application/json"
+    },
+    body: JSON.stringify(item)
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+}
+// clearing votes
+function clearVotes(item) {
+  fetch(`http://localhost:3000/characters/${item.id}`,{
+    method: 'PATCH',
+    headers:{
+      "Content-type":"application/json"
+    },
+    body: JSON.stringify(item)
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+}
